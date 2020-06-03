@@ -22,7 +22,9 @@ or
 ```bash
 kill -44 $(pidof dwmblocks)
 # Add 34 to the pre-configured signal for the block in config.h
-# When dwmblocks is not running -  $(pidof dwmblocks) will not return anything, causing this command to exit with a non-zero value. Be mindful if you're chaining with `&&`
+# When dwmblocks is not running -  $(pidof dwmblocks) will not return anything,
+# causing this command to exit with a non-zero value.
+# Be mindful if you're chaining with `&&`
 ```
 
 If you look at the default config.h (config.def.h), volume block has been pre-configured with the signal 10 - as used above.
