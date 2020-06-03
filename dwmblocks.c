@@ -39,16 +39,28 @@ static void (*writestatus) () = setroot;
 //opens process *cmd and stores output in *output
 void getcmd(const Block *block, char *output)
 {
-	strcpy(output, block->icon);
+	char c[CMDLENGTH] = "";
 	char *cmd = block->command;
 	FILE *cmdf = popen(cmd,"r");
 	if (!cmdf)
 		return;
-	char c;
+	
 	int i = strlen(block->icon);
-	fgets(output+i, CMDLENGTH-i, cmdf);
-	i = strlen(output);
-	if (delim != '\0' && --i){
+	if(fgets(c, CMDLENGTH-i, cmdf) == NULL)
+		return;
+
+	char *pos;
+	while((pos=strchr(c, '\n')) != NULL)
+		*pos = '\0';
+	
+	if (strlen(c) == 0)
+		return;
+	
+	strcpy(output, block->icon);
+	strcpy(output+i, c);
+	i += strlen(c);
+	
+	if (delim != '\0' && --i) {
 		output[i++] = ' ';
 		output[i++] = delim;
 		output[i++] = ' ';
