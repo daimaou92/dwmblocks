@@ -60,7 +60,7 @@ void getcmd(const Block *block, char *output)
 	strcpy(output+i, c);
 	i += strlen(c);
 	
-	if (delim != '\0' && --i) {
+	if (delim != '\0' && i) {
 		output[i++] = ' ';
 		output[i++] = delim;
 		output[i++] = ' ';
