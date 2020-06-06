@@ -9,7 +9,7 @@ static const Block blocks[] = {
 	
 	{"TEMP: ", "sensors | awk '/^temp1:/{print $2}'",5,0},
 
-	{"WIFI: ", "$SCRIPT_DIR/wifi.sh",30,0},
+	{"WIFI: ", "$DWMBLOCKS_SCRIPTS_DIR/wifi.sh",30,0},
 
 	{"", "date \"+%a %d %b %Y %H:%M:%S\"",1,0}
 };
