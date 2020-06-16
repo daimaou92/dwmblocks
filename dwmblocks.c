@@ -46,15 +46,21 @@ void getcmd(const Block *block, char *output)
 		return;
 	
 	int i = strlen(block->icon);
-	if(fgets(c, CMDLENGTH-i, cmdf) == NULL)
+	if(fgets(c, CMDLENGTH-i, cmdf) == NULL){
+		pclose(cmdf);
+		output[0] = '\0';
 		return;
+	}
 
 	char *pos;
 	while((pos=strchr(c, '\n')) != NULL)
 		*pos = '\0';
 	
-	if (strlen(c) == 0)
+	if (strlen(c) == 0){
+		pclose(cmdf);
+		output[0] = '\0';
 		return;
+	}
 	
 	strcpy(output, block->icon);
 	strcpy(output+i, c);
