@@ -9,7 +9,7 @@ static const Block blocks[] = {
 
 	{"", "$DWMBLOCKS_SCRIPTS_DIR/volume.sh",0,10},
 
-	{"🔆 ", "xbacklight | sed 's/\\..*//'",0,11},
+	{"🔆 ", "echo \"$(xbacklight -get)%\"" ,0,11},
 	
 	{"🌡 ", "sensors | awk '/^temp1:/{print $2}'",5,0},
 
